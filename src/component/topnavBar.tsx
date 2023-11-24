@@ -53,10 +53,10 @@ const NavBar = () => {
           <div className="flex-shrink-0">
             <Image
               className="w-full h-full"
-              src="/bravo.png" // Path relative to the `public` directory
+              src="/bravo.png" 
               alt="bravo  "
-              width={100} // Set your desired width
-              height={100} // Set your desired height
+              width={100} 
+              height={100}
             />
           </div>
           <div className="hidden md:block">

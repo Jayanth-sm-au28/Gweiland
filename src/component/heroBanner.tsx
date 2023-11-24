@@ -1,45 +1,94 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
-
 import Image from "next/image";
 import carousel from "../../public/carousel.svg";
 import carousel_1 from "../../public/carousel_1.svg";
 import carousel_2 from "../../public/carousel_2.svg";
-// import carousel_3 from "../../public/carousel_3.svg";
-// import carousel_4 from "../../public/carousel_4.svg";
+import carousel_3 from "../../public/carousel_3.svg";
+import carousel_4 from "../../public/carousel_4.svg";
 
-const images = [carousel, carousel_1, carousel_2, ];
+
+
+
 
 const HeroBanner: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide === 0 ? carouselItems.length - 1 : prevSlide - 1));
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prevSlide) => (prevSlide === carouselItems.length - 1 ? 0 : prevSlide + 1));
+  };
+
+
+  const carouselItems = [
+    { src: carousel, alt: "bravo", text: "Heretiage Hoddies" },
+    { src: carousel_1, alt: "bravo", text: "Heretiage Premium Hoddies" },
+    { src: carousel_2, alt: "bravo", text: "Premium Tees" },
+    { src: carousel_3, alt: "bravo", text: "Heretiage Women's Tanks " },
+    { src: carousel_4, alt: "bravo", text: "Heritage Tees" },
+    // Add more items as needed
+  ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000);
+    const intervalId = setInterval(() => {
+      handleNextSlide();
+    }, 5000); // Change the duration as needed (in milliseconds)
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(intervalId);
+  }, [currentSlide]);
 
   return (
-    <div className="relative">
-      <div className="flex overflow-hidden">
-        {images.map((image, index) => (
+    <div className="relative w-full group">
+      {/* Carousel wrapper */}
+      <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
+        {carouselItems.map((item, index) => (
           <div
             key={index}
-            className={`flex-shrink-0 w-full transform transition-transform duration-200 ${
-              index === currentIndex ? "translate-x-0" : "translate-x-full"
-            }`}
+            className={`absolute top-0 left-0 w-full h-full ${
+              index === currentSlide ? "opacity-100 z-10" : "opacity-0"
+            } transition-transform duration-700 transform translate-x-${index - currentSlide} ease-in-out`}
           >
-            <Image src={image} alt={`Carousel Image ${index}`} />
+            <Image
+              src={item.src}
+              alt={item.alt}
+              layout="responsive"
+              width={1920}
+              height={1080}
+              objectFit="cover"
+            />
+            <div className={`absolute text-white text-center ${index === carouselItems.length - 1 ? "bottom-4 right-1/2 transform translate-x-1/2" : "bottom-4 left-1/2 transform -translate-x-1/2"}`}>
+              <h2 className="text-2xl font-bold">{item.text}</h2>
+              <button className="bg-blue-500 text-white px-4 py-2 mt-2 rounded-full">
+                Shop Now
+              </button>
+            </div>
           </div>
         ))}
       </div>
-      <h1 className="text-lg text-black text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        Hero Banner
-      </h1>
+      {/* Slider controls */}
+      <button
+        type="button"
+        className="absolute top-1/2 start-0 z-30 flex items-center justify-center h-10 px-4 ml-4 bg-gray-800 text-white rounded-full cursor-pointer group focus:outline-none bg-shark opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+        onClick={handlePrevSlide}
+      >
+        {"<"}
+      </button>
+      <button
+        type="button"
+        className="absolute top-1/2 end-0 z-30 flex items-center justify-center h-10 px-4 mr-4 bg-gray-800 text-white rounded-full cursor-pointer group focus:outline-none bg-shark opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"
+        onClick={handleNextSlide}
+      >
+        {">"}
+      </button>
     </div>
   );
 };
 
 export default HeroBanner;
+
+
+
+

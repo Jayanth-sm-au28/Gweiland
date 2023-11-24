@@ -14,7 +14,7 @@ export default function Home() {
         <AnnouncementBar/>
 
         <TopnavBar/>
-        {/* <HeroBanner/> */}
+        <HeroBanner/>
         <InfiniteScrollCarousel/>
 
         <h1 className='text-lg text-red-500 text-center'>welcome</h1>
