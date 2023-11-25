@@ -68,7 +68,7 @@ const InfiniteScrollCarousel = () => {
 
   ]
   return (
-    <div className='w-full flex items-center justify-between whitespace-nowrap  animate-infiniteScroll h-[150px] flex-none flex-shrink-0 mt-8 '>
+    <div className='w-full flex items-center justify-between whitespace-nowrap  animate-infiniteScroll h-[150px] mt-8 '>
       {
         data.map((el: any, key: any) => (
           <Link href={el?.navigate} className={`flex  justify-center  cursor-pointer h-[150px] ml-24  rounded-r-lg  ${el?.color}`} key={`BrandCard${key}`}>

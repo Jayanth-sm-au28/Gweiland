@@ -69,7 +69,6 @@ const NavBar = () => {
               ))}
           </div>
           <div className="flex -mr-2 md:hidden">
-            {/* Mobile menu button */}
             <button
               type="button"
               onClick={toggleMobileMenu}
@@ -77,7 +76,6 @@ const NavBar = () => {
             >
               <span className="sr-only">Open main menu</span>
               {isMobileMenuOpen ? (
-                // Close Icon
 
                 <svg
                   className="block h-6 w-6"
@@ -94,7 +92,6 @@ const NavBar = () => {
                   ></path>
                 </svg>
               ) : (
-                // Menu Icon
                 <svg
                   className="block h-6 w-6"
                   fill="none"
@@ -115,7 +112,6 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
