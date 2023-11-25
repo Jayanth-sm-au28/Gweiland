@@ -43,6 +43,11 @@ module.exports = {
     animation: {
       infiniteScroll: "slide 5s linear infinite",
     },
+    screens: {
+      xl: "1068px",
+      lg: "769px",
+      sm: "320px"
+    },
     backgroundImage: {
       carousel1: "url('/carousel_1.png')",
       carousel2: "url('/carousel_2.png')",

@@ -1,8 +1,7 @@
-import AnnouncementBar from "@/component/announcementBar";
+import AnnouncementBar from "@/component/AnnouncementBar";
 import InfiniteScrollCarousel from "@/component/InfiniteScrollCarousel";
-import HeroBanner from "@/component/heroBanner";
-import TopnavBar from "@/component/topnavBar";
-import BrandCarousel from "@/component/InfiniteScrollCarousel"
+import HeroBanner from "@/component/HeroBanner";
+import TopnavBar from "@/component/TopnavBar";
 
 export default function Home() {
   return (
@@ -17,7 +16,6 @@ export default function Home() {
         <HeroBanner/>
         <InfiniteScrollCarousel/>
 
-        <h1 className='text-lg text-red-500 text-center'>welcome</h1>
       </div>
     </main>
   );
